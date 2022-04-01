@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="400" height="800" style="border:1px solid"></canvas>
+    <script>
+        var myCanvas = document.getElementById('myCanvas');
+        var context = myCanvas.getContext('2d');
+        var context1 = myCanvas.getContext('2d');
+        nhanvat = {
+            x: 190,
+            y: 50
+        }
+        vatcan = {
+            x: 0,
+            y: 770
+        }
+
+        setInterval(start, 100)
+
+
+        function start() {
+            context.beginPath();
+            context.clearRect(0, 0, 400, 800);
+            // context.fillStyle = 'red';
+            context1.fillStyle = 'black'
+            context.fillRect(nhanvat.x, nhanvat.y, 20, 20);
+            nhanvat.y = nhanvat.y + 10
+            context1.fillRect(vatcan.x, vatcan.y, 100, 20);
+            vatcan.y = vatcan.y - 12
+
+            context.closePath();
+            vacham();
+
+        }
+        // class nhanvat {
+        //     constructor(a1, b1, width1, height1) {
+        //         this.a1 = a1;
+        //         this.b1 = b1;
+        //         this.width1 = w1;
+        //         this.height1 = h1;
+        //     }
+        // }
+        // class vatcan {
+        //     constructor(a2, b2, width2, height2) {
+        //         this.a2 = a2;
+        //         this.b2 = b2;
+        //         this.width2 = w2;
+        //         this.height2 = h2;
+        //     }
+        // }
+
+        function vacham() {
+            // let distX = (nhanvat.a1 + (nhanvat.w1) / 2) - (vatcan.a1 + (vatcan.w2) / 2);
+            // if (distX < 0)
+            //     distX = -distX;
+            // const distW = (nhanvat.w1 + vatcan.w2) / 2;
+            // let distY = nhanvat.b1 + (nhanvat.w1 / 2) - (vatcan.b2 + (vatcan.h2) / 2)
+            // if (distY < 0)
+            //     distY = -distY;
+            // const distH = (nhanvat.b1 + vatcan.h2) / 2
+            // return (distX <= distW && distY <= distH)
+            if (nhanvat.y > 800 || nhanvat.y == 20) {
+                console.log('thua');
+                alert('game over')
+            }
+        }
+
+        document.addEventListener('keydown', key => {
+            switch (key.keyCode) {
+                case 37:
+                    if (nhanvat.x > 0)
+                        nhanvat.x -= 7
+                    break;
+                case 39:
+                    if (nhanvat.x + 20 < 400)
+                        nhanvat.x += 7
+                    break;
+
+            }
+        })
+    </script>
+
+</body>
+
+</html>
